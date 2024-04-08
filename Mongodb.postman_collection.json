@@ -1,0 +1,833 @@
+{
+	"info": {
+		"_postman_id": "79bd8e49-1127-402b-9b35-9a6bbb739c53",
+		"name": "Mongodb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "product_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST a new product - Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST a new product - Response body should contain newly created product information\", function () {\r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.be.an('object').that.is.not.empty;\r",
+							"    pm.expect(responseBody._id).to.exist; \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Product4\",\r\n    \"image\": \"product4-image.jpg\",\r\n    \"pricing\": 63.69,\r\n    \"shippingCost\": 7.99\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all products - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET all products - Response body should contain product array\", function () {\r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.be.an('array').that.is.not.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"PUT update a product - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PUT update a product - Response body should contain updated product information\", function () {\r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.be.an('object').that.is.not.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"latestp product\",\r\n  \"image\": \"latestproduct-image.jpg\",\r\n  \"pricing\": 109.99,\r\n  \"shippingCost\": 6.99\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/6613831789b305772ebae562",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"6613831789b305772ebae562"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"DELETE delete a product - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DELETE delete a product - Response body should contain success message\", function () {\r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.message).to.eql(\"Product deleted successfully\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/6613831789b305772ebae562",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"6613831789b305772ebae562"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST a new user - Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST a new user - Response body should contain newly created user information\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('object').that.is.not.empty;\r",
+							"   \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user@777.com\",\r\n    \"password\": \"abhijithpassword\",\r\n    \"username\": \"akumar77777\",\r\n    \"purchaseHistory\": \"Bags\",\r\n    \"shippingAddress\": \"Waterloo, Canada\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all users - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET all users - Response body should not be empty\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"PUT an existing user - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PUT an existing user - Response body should contain updated user information\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('object').that.is.not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"abhi@555.com\",\r\n    \"password\": \"abhi555password\",\r\n    \"username\": \"akumar555\",\r\n    \"purchaseHistory\": \"Bag\",\r\n    \"shippingAddress\": \"Waterloo, Canada\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/6613896478ab10aadc691f04",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"6613896478ab10aadc691f04"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"DELETE an existing user - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DELETE an existing user - Response body should contain a success message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('message').that.equals('User deleted successfully');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/661433b264120f8cc596fd2a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"661433b264120f8cc596fd2a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST a new order - Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST a new order - Response body should contain order details\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('userId');\r",
+							"    pm.expect(jsonData).to.have.property('totalAmount');\r",
+							"    pm.expect(jsonData).to.have.property('status');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"2\",\r\n    \"totalAmount\": 150.00,\r\n    \"status\": \"completed\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders_get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all orders - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET all orders - Response body should not be empty\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.be.above(0);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders_delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"DELETE an order - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DELETE an order - Response body should contain success message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('message').that.equals('Order deleted successfully');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/orders/6614371768c3f1e2074ebe7c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"6614371768c3f1e2074ebe7c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comments_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST a new comment - Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST a new comment - Response body should contain comment details\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('productId');\r",
+							"    pm.expect(jsonData).to.have.property('userId');\r",
+							"    pm.expect(jsonData).to.have.property('rating');\r",
+							"    pm.expect(jsonData).to.have.property('text');\r",
+							"    pm.expect(jsonData).to.have.property('image');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"2\",\r\n    \"userId\": \"2\",\r\n    \"rating\": 4,\r\n    \"text\": \"Reyban glass\",\r\n    \"image\": \"Reyban.jpeg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comments_get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all comments - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET all comments - Response body should be an array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comments_put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"PUT update a comment - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PUT update a comment - Response body should contain updated comment details\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('productId');\r",
+							"    pm.expect(jsonData).to.have.property('userId');\r",
+							"    pm.expect(jsonData).to.have.property('rating');\r",
+							"    pm.expect(jsonData).to.have.property('text');\r",
+							"    pm.expect(jsonData).to.have.property('image');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productId\": \"2\",\r\n  \"userId\": \"2\",\r\n  \"rating\": 2,\r\n  \"text\": \"Skating Board\",\r\n  \"image\": \"skating_image.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/comments/66144274c9e2d4b2596ef831",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"comments",
+						"66144274c9e2d4b2596ef831"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comments_delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"DELETE a comment - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DELETE a comment - Response body should contain success message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('message');\r",
+							"    pm.expect(jsonData.message).to.eql('Comment deleted successfully');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/comments/66144274c9e2d4b2596ef831",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"comments",
+						"66144274c9e2d4b2596ef831"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "carts_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST a new cart - Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST a new cart - Response body should contain cart details\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('userId');\r",
+							"    pm.expect(jsonData).to.have.property('productId');\r",
+							"    pm.expect(jsonData).to.have.property('quantity');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"1\",\r\n    \"productId\": \"1\",\r\n    \"quantity\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "carts_get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all carts - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET all carts - Response body should be an array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "carts_put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"PUT update a cart - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PUT update a cart - Response body should contain updated cart details\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('userId');\r",
+							"    pm.expect(jsonData).to.have.property('productId');\r",
+							"    pm.expect(jsonData).to.have.property('quantity');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"1\",\r\n    \"productId\": \"2\",\r\n    \"quantity\": 5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/carts/66144686c9e2d4b2596ef83b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carts",
+						"66144686c9e2d4b2596ef83b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "carts_delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"DELETE a cart - Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DELETE a cart - Response body should contain success message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('message', 'Cart deleted successfully');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/carts/6614475cc9e2d4b2596ef840",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carts",
+						"6614475cc9e2d4b2596ef840"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
